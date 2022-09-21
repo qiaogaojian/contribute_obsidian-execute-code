@@ -5,8 +5,11 @@ export type ExecutorSettingsLanguages = Exclude<typeof supportedLanguages[number
 export interface ExecutorSettings {
 	timeout: number;
 	nodePath: string;
+	tsPath: string;
 	nodeArgs: string;
+	tsArgs: string;
 	jsInject: string;
+	tsInject: string;
 	pythonPath: string;
 	pythonArgs: string;
 	pythonEmbedPlots: boolean;
@@ -55,8 +58,11 @@ export interface ExecutorSettings {
 export const DEFAULT_SETTINGS: ExecutorSettings = {
 	timeout: 10000,
 	nodePath: "node",
+	tsPath: "tsc",
 	nodeArgs: "",
+	tsArgs: "",
 	jsInject: "",
+	tsInject: "",
 	pythonPath: "python",
 	pythonArgs: "",
 	pythonEmbedPlots: true,
