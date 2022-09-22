@@ -10,9 +10,7 @@ export type ExecutorSettingsLanguages = Exclude<typeof supportedLanguages[number
 export interface ExecutorSettings {
 	timeout: number;
 	nodePath: string;
-	tsPath: string;
 	nodeArgs: string;
-	tsArgs: string;
 	jsInject: string;
 	tsPath: string;
 	tsArgs: string;
