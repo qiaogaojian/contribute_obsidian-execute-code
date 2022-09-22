@@ -48,5 +48,6 @@ esbuild.build({
 	logLevel: "info",
 	sourcemap: prod ? false : 'inline',
 	treeShaking: true,
-	outfile: 'src/main.js',
+	outfile: 'D:\\Gitee\\obsidian\\.obsidian\\plugins\\execute-code\\main.js',
+	// outfile: 'D:\\Github\\Obsidian\\vault\\.obsidian\\plugins\\execute-code\\main.js',
 }).catch(() => process.exit(1));
