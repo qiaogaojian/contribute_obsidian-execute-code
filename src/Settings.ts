@@ -73,9 +73,7 @@ export interface ExecutorSettings {
 export const DEFAULT_SETTINGS: ExecutorSettings = {
 	timeout: 10000,
 	nodePath: "node",
-	tsPath: "tsc",
 	nodeArgs: "",
-	tsArgs: "",
 	jsInject: "",
 	tsPath: "ts-node",
 	tsArgs: "",
