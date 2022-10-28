@@ -1,14 +1,14 @@
-import {supportedLanguages} from "./main";
-
-
-export type ExecutorSettingsLanguages = Exclude<typeof supportedLanguages[number], "javascript">;
-
+import {LanguageId} from "src/main";
 
 /**
  * Interface that contains all the settings for the extension.
  */
 export interface ExecutorSettings {
+	lastOpenLanguageTab: LanguageId | undefined
+	
 	timeout: number;
+	allowInput: boolean;
+	wslMode: boolean;
 	nodePath: string;
 	nodeArgs: string;
 	jsInject: string;
@@ -48,10 +48,11 @@ export interface ExecutorSettings {
 	powershellFileExtension: string;
 	powershellInject: string;
 	cargoPath: string;
-	cargoArgs: string;
+	cargoEvalArgs: string;
 	rustInject: string;
 	cppRunner: string;
 	cppInject: string;
+	cppUseMain: boolean;
 	clingPath: string;
 	clingArgs: string;
 	clingStd: string;
@@ -64,6 +65,39 @@ export interface ExecutorSettings {
 	kotlinArgs: string;
 	kotlinFileExtension: string;
 	kotlinInject: string;
+	runghcPath: string;
+	ghcPath: string;
+	ghciPath: string;
+	haskellInject: string;
+	useGhci: boolean;
+	mathematicaPath: string;
+	mathematicaArgs: string;
+	mathematicaFileExtension: string;
+	mathematicaInject: string;
+	scalaPath: string;
+	scalaArgs: string;
+	scalaFileExtension: string;
+	scalaInject: string;
+
+	jsInteractive: boolean;
+	tsInteractive: boolean;
+	csInteractive: boolean;
+	luaInteractive: boolean;
+	pythonInteractive: boolean;
+	cppInteractive: boolean;
+	prologInteractive: boolean;
+	shellInteractive: boolean;
+	bashInteractive: boolean;
+	groovyInteractive: boolean;
+	rInteractive: boolean;
+	goInteractive: boolean;
+	rustInteractive: boolean;
+	javaInteractive: boolean;
+	powershellInteractive: boolean;
+	kotlinInteractive: boolean;
+	mathematicaInteractive: boolean;
+	haskellInteractive: boolean;
+	scalaInteractive: boolean;
 }
 
 
@@ -71,7 +105,11 @@ export interface ExecutorSettings {
  * The default settings for the extensions as implementation of the ExecutorSettings interface.
  */
 export const DEFAULT_SETTINGS: ExecutorSettings = {
+	lastOpenLanguageTab: undefined,
+	
 	timeout: 10000,
+	allowInput: true,
+	wslMode: false,
 	nodePath: "node",
 	nodeArgs: "",
 	jsInject: "",
@@ -111,10 +149,11 @@ export const DEFAULT_SETTINGS: ExecutorSettings = {
 	powershellFileExtension: "ps1",
 	powershellInject: "",
 	cargoPath: "cargo",
-	cargoArgs: "run",
+	cargoEvalArgs: "",
 	rustInject: "",
 	cppRunner: "cling",
 	cppInject: "",
+	cppUseMain: false,
 	clingPath: "cling",
 	clingArgs: "",
 	clingStd: "c++17",
@@ -127,4 +166,37 @@ export const DEFAULT_SETTINGS: ExecutorSettings = {
 	kotlinArgs: "-script",
 	kotlinFileExtension: "kts",
 	kotlinInject: "",
+	runghcPath: "runghc",
+	ghcPath: "ghc",
+	ghciPath: "ghci",
+	useGhci: false,
+  haskellInject: "",
+	mathematicaPath: "wolframscript",
+	mathematicaArgs: "",
+	mathematicaFileExtension: "wls",
+	mathematicaInject: "",
+	scalaPath: "scala",
+	scalaArgs: "",
+	scalaFileExtension: "scala",
+	scalaInject: "",
+
+	jsInteractive: true,
+	tsInteractive: false,
+	csInteractive: false,
+	luaInteractive: false,
+	pythonInteractive: true,
+	cppInteractive: false,
+	prologInteractive: false,
+	shellInteractive: false,
+	bashInteractive: false,
+	groovyInteractive: false,
+	rInteractive: false,
+	goInteractive: false,
+	rustInteractive: false,
+	javaInteractive: false,
+	powershellInteractive: false,
+	kotlinInteractive: false,
+	mathematicaInteractive: false,
+	haskellInteractive: false,
+	scalaInteractive: false
 }

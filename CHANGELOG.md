@@ -4,6 +4,87 @@ All notable changes to this project will be documented in this file.
 
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 
+
+## [1.3.0]
+### Added
+- WSL support (thanks to @clohal)
+
+### Changed
+- Fix bug where recursion didn't work and some parts of the code couldn't be executed (Python executor's usage of `exec`/`eval`) (thanks to @clohal)
+- Fix formatting for the Scale section in the README.md (thanks to @cbarond)
+- Fix mixed up mathematica settings (thanks to @clohal)
+- Fix wrong setting for Mathematica
+- Improve styles (thanks to @milan338)
+- Refactor interactive executors to cut down on code reuse (thanks to @chlohal)
+- Fix Error Notif on Success (thanks to @clohal)
+
+## [1.2.0] - 2022-10-19
+### Added
+- Support for Scala (Thanks to @chlohal)
+- Add run indicator to non-interactive blocks (Thanks to @milan338 and @chlohal)
+
+### Changed
+- Fix problems with runtimes and never hiding running indicators (Thanks to @milan338)
+
+## [1.1.1] - 2022-10-18
+### Changes
+- Various bug fixes (Thanks to @chlohal)
+
+
+## [1.1.0]
+### Added
+- Added Option to use either ghci or runghc. (Thanks to @afonsofrancof)
+- `@html(...)` command and better HTML Handling. (Thanks to @chlohal and @milan338)
+- Show indicator when block is running. (Thanks to @chlohal) 
+
+### Changed
+- Update Future Work section and add snap/flatpak/appimage problem to known issues. (Thanks to @chlohal)
+- Fix python notebook mode freezing after showing a matplotlib plot. (Thanks to @milan338)
+- Better output coloring to fix color problems with plugins like codemirror. (Thanks to @milan338)
+- Fix JS notebook mode freezing when global injection is used. (Thanks to @chlohal)
+- Fix Rust Execution to use `cargo eval` instead of `cargo run`. (Thanks to @chlohal)
+
+
+## [1.0.0]
+
+### Added
+
+- 'Notebook Mode' for Python and JavaScript utilizing their respective REPL. (Thanks to @chlohal)
+- Add command to run all blocks in a given file to the command palette. (Thanks to @chlohal)
+- Support for Haskell. (Thanks to @afonsofrancof)
+
+### Changed
+
+- Changed syntax for Code injection via pre and post blocks. (Thanks to @milan338)
+- Style of the run and clear buttons. (Thanks to @milan338)
+- Updated the README and create collapsing layout. (Thanks to @milan338)
+
+## [0.18.0]
+
+### Added
+
+- Support for Wolfram Mathematica
+
+### Changed
+
+- Quickfix for issues #77 and #81 by spawning always with Shell (Problems with spawning processes on Windows. This also
+  affects #75, Security concern with spawning in shell.)
+- Fix for #84
+
+## [0.17.0] - 2022-09-24
+
+### Added
+
+- Support for interactive input blocks. That means code blocks can now read from stdin. (Thanks to @chlohal)
+
+## [0.16.0] - 2022-09-24
+
+### Added
+
+- Support for TypeScript (Thanks to @qiaogaojian)
+- Support for C# (Thanks to @qiaogaojian)
+- Support for Lua (Thanks to @qiaogaojian)
+
 ## [0.15.2] - 2022-09-21
 
 ### Changed
