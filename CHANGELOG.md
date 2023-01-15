@@ -5,6 +5,37 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 
 
+## [1.6.1]
+### Changed
+- Fix magic commands @vault_path and @vault_url
+
+
+## [1.6.0]
+### Added
+- New magic command `@theme` to get if obsidian is in dark or light mode (Thanks to @chlohal)
+- New magic commands `@vault_path` and `@note_path` to get the path, and `@vault_url` and `@note_url` to get the url. They replace the old magic commands `@vault` and `@note`.
+- Support for Racket (Thanks to @Ghexor)
+- Support for F# (Thanks to @chlohal)
+- Support for Dart (Thanks to @andremeireles)
+- Support for Ruby (Thanks to @santry)
+- Support for Batch scripts (Thanks to @hannesdelbeke)
+
+## [1.5.0]
+### Added
+- Support for C (Thanks to @chlohal)
+
+### Changed
+- Fix the wrong options for wolframscript (Thanks to @davnn)
+- Escape ANSI color codes in the output (Thanks to @chlohal)
+
+## [1.4.0]
+### Added
+- Notebook mode for R (Thanks to @chlohal)
+- Improved hiding of running indicator (Thanks to @chlohal and @ZackYJz)
+
+### Changed
+- Fix problem with the output boxes showing up (Thanks to @qiaogaojian)
+
 ## [1.3.0]
 ### Added
 - WSL support (thanks to @clohal)
