@@ -74,6 +74,15 @@ pre:hover code.language-output {
 	margin-bottom: 28px;
 }
 
+span.stdout, span.stderr{
+	word-break:normal;
+	width:auto;
+	display:block;
+	white-space:pre-wrap;
+	word-wrap : break-word ;
+	overflow: hidden ;
+}
+
 :not(.use-custom-output-color) code.language-output span.stdout {
 	color: var(--text-muted) !important;
 }
