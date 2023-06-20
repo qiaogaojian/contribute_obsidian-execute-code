@@ -57,6 +57,15 @@ export interface ExecutorSettings {
 	powershellArgs: string;
 	powershellFileExtension: string;
 	powershellInject: string;
+	powershellEncoding: BufferEncoding;
+	octavePath: string;
+	octaveArgs: string;
+	octaveFileExtension: string;
+	octaveInject: string;
+	maximaPath: string;
+	maximaArgs: string;
+	maximaFileExtension: string;
+	maximaInject: string;
 	cargoPath: string;
 	cargoEvalArgs: string;
 	rustInject: string;
@@ -103,6 +112,9 @@ export interface ExecutorSettings {
 	rubyPath: string;
 	rubyArgs: string;
 	rubyInject: string;
+	sqlPath: string;
+	sqlArgs: string;
+	sqlInject: string;
 
 	jsInteractive: boolean;
 	tsInteractive: boolean;
@@ -130,6 +142,9 @@ export interface ExecutorSettings {
 	fsharpInteractive: boolean;
 	cInteractive: boolean;
 	rubyInteractive: boolean;
+	sqlInteractive: boolean;
+	octaveInteractive: boolean;
+	maximaInteractive: boolean;
 }
 
 
@@ -189,7 +204,8 @@ export const DEFAULT_SETTINGS: ExecutorSettings = {
 	powershellPath: "powershell",
 	powershellArgs: "-file",
 	powershellFileExtension: "ps1",
-	powershellInject: "",
+	powershellInject: "$OutputEncoding = [console]::InputEncoding = [console]::OutputEncoding = New-Object System.Text.UTF8Encoding",
+	powershellEncoding: "latin1",
 	cargoPath: "cargo",
 	cargoEvalArgs: "",
 	rustInject: "",
@@ -236,7 +252,17 @@ export const DEFAULT_SETTINGS: ExecutorSettings = {
 	rubyPath: "ruby",
 	rubyArgs: "",
 	rubyInject: "",
-
+	sqlPath: "psql",
+	sqlArgs: "-d <database> -U <user> -f",
+	sqlInject: "",
+	octavePath: "octave",
+	octaveArgs: "-q",
+	octaveFileExtension: "m",
+	octaveInject: "figure('visible','off')  # Necessary to embed plots",
+	maximaPath: "maxima",
+	maximaArgs: "-qb",
+	maximaFileExtension: "mx",
+	maximaInject: "",
 	jsInteractive: true,
 	tsInteractive: false,
 	csInteractive: false,
@@ -262,5 +288,8 @@ export const DEFAULT_SETTINGS: ExecutorSettings = {
 	fsharpInteractive: false,
 	cInteractive: false,
 	racketInteractive: false,
-	rubyInteractive: false
+	rubyInteractive: false,
+	sqlInteractive: false,
+	octaveInteractive: false,
+	maximaInteractive: false,
 }

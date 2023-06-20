@@ -5,15 +5,57 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 
 
-## [1.6.1]
+## [1.8.1]
 ### Changed
+- Update version support for C/C++. Add Working draft for ISO C++ 2020 for the C++ language. (Thanks to @drsect0r)
+
+## [1.8.0]
+### Added
+- Support for Octave
+- Support for Maxima
+
+## [1.7.1]
+
+### Changed
+
+- Add more examples for magic commands to README.md
+- Pass environmental variables to the REPL executors
+- Allow language names that are not lower case
+
+## [1.7.0]
+
+### Added
+
+- Support for SQL
+- add info percent sign batch (Thanks to @hannesdelbeke)
+
+### Changed
+- Remove ANSI escape codes from `stderr`
+- Add new executor for PowerShell that fixes problems with file encodings by encoding powershell scripts with latin-1 instead of windows-1252.K
+
+## [1.6.2]
+
+### Added
+
+- Helpful docu for finding the path for a language (Thanks to @javascriptooo)
+
+### Changed
+
+- Fix wrong scala settings (Thanks to @scoopsdev)
+
+## [1.6.1]
+
+### Changed
+
 - Fix magic commands @vault_path and @vault_url
 
-
 ## [1.6.0]
+
 ### Added
+
 - New magic command `@theme` to get if obsidian is in dark or light mode (Thanks to @chlohal)
-- New magic commands `@vault_path` and `@note_path` to get the path, and `@vault_url` and `@note_url` to get the url. They replace the old magic commands `@vault` and `@note`.
+- New magic commands `@vault_path` and `@note_path` to get the path, and `@vault_url` and `@note_url` to get the url.
+  They replace the old magic commands `@vault` and `@note`.
 - Support for Racket (Thanks to @Ghexor)
 - Support for F# (Thanks to @chlohal)
 - Support for Dart (Thanks to @andremeireles)

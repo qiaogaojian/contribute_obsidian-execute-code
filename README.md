@@ -1,4 +1,11 @@
 # Obsidian Execute Code Plugin
+<div align='right'>
+
+![Obsidian Downloads](https://img.shields.io/badge/dynamic/json?color=8572db&labelColor=1e1e1e&label=Downloads&query=$['execute-code'].downloads&url=https://raw.githubusercontent.com/obsidianmd/obsidian-releases/master/community-plugin-stats.json) 
+![GitHub package.json version](https://img.shields.io/github/package-json/version/twibiral/obsidian-execute-code?color=8572db&labelColor=1e1e1e&label=Current%20Version) 
+![GitHub Release Date](https://img.shields.io/github/release-date/twibiral/obsidian-execute-code?color=8572db&labelColor=1e1e1e&label=Latest%20Release)
+
+</div>
 
 This plugin allows you to execute code snippets in code blocks in your notes. The plugin adds a 'run' button for code blocks in supported languages. Clicking them results in the code of the block being executed. After the execution the result of the execution is showed. An interactive input element is created when your code snippets reads expects user input.
 
@@ -7,17 +14,19 @@ The result is shown only after the execution is finished. It is not possible to 
 ![Video that shows how the plugin works.](https://github.com/twibiral/obsidian-execute-code/blob/master/images/execute_code_example.gif?raw=true)
 
 
-The following [languages are supported](#supported-programming-languages-): C, CPP, Dart, Golang, Groovy, Kotlin, Java, JavaScript, TypeScript, Lean, Lua, CSharp, Prolog, Rust, Python, R, Ruby, Wolfram Mathematica, Haskell, Scala, Racket, F#, Batch, Shell & Powershell.
+The following [languages are supported](#supported-programming-languages-): C, CPP, Dart, Golang, Groovy, Kotlin, Java, JavaScript, TypeScript, Lean, Lua, CSharp, Prolog, Rust, Python, R, Ruby, Wolfram Mathematica, Haskell, Scala, Racket, F#, Batch, Shell & Powershell, Octave, and Maxima.
 
 
-Python and Rust support embedded plots. All languages support ["magic" commands](#magic-commands-) that help you to access paths in obsidian or show images in your notes.
+Python, Rust, and Octave support embedded plots. All languages support ["magic" commands](#magic-commands-) that help you to access paths in obsidian or show images in your notes.
 
 You can create code blocks that are executed before or after each code block of the same language and define [global code injections](#global-code-injection-and-reusing-code-blocks-).
 
 Take a look at the [changelog](CHANGELOG.md) to see what has changed in recent versions.
 
+<div align='center'>
 
-[![Obsidian Downloads](https://img.shields.io/badge/dynamic/json?color=1e1e1e&labelColor=8572db&label=Downloads&query=$['execute-code'].downloads&url=https://raw.githubusercontent.com/obsidianmd/obsidian-releases/master/community-plugin-stats.json&)](obsidian://show-plugin?id=execute-code)
+[![Buy us a coffee](https://img.shields.io/badge/-buy_us_a%C2%A0coffee-gray?logo=buy-me-a-coffee)](https://www.buymeacoffee.com/timwibiral)
+</div>
 
 ## Supported programming languages 💻
 
@@ -245,8 +254,12 @@ echo "Hello World!"
 <details>
 <summary>Batch</summary>
 
-- Requirements: Used to execute batch commands on Windows (also known as BAT or CMD). Default is command prompt, but can be set to your preferred shell in the settings.
-
+- **Requirements**: Used to execute batch commands on Windows (also known as BAT or CMD). Default is command prompt, but can be set to your preferred shell in the settings.
+- **Important**: <br>
+	The percent sign is used in batch files to represent command line parameters: e.g. %1, %2, ... <br>
+	Two percent signs in a batch file are treated like a single percent sign in a command: e.g. %%f <br>
+	When using variables in execute code, use 2 percent signs. More info [here](https://stackoverflow.com/questions/14509652/what-is-the-difference-between-and-in-a-cmd-file)<br>
+	
 ```batch
 ECHO Hello World!
 ```
@@ -358,6 +371,7 @@ hello("Bob")
 mySum:: Num a => a -> a -> a
 mySum a b = a+b
 ```
+
 </details>
 
 <details>
@@ -368,6 +382,7 @@ mySum a b = a+b
 ```scala
 println("Hello, World!")
 ```
+
 </details>
 
 <details>
@@ -389,6 +404,39 @@ println("Hello, World!")
 puts "Hello, World!"
 ```
 </details>
+
+<details>
+<summary>Octave</summary>
+
+- Requirements: Octave is installed and the correct path is set in the settings.
+
+```octavia
+exp(i*pi)
+
+x = -10:0.1:10;
+plot (x, sin(x));
+```
+(Thanks to Michael M. Tung for the code example.)
+
+- Figures are set to invisible by default. They are store in a file and directly embedded in the note.
+
+</details>
+
+<details>
+<summary>Maxima</summary>
+
+- Requirements: Maxima is installed and the correct path is set in the settings.
+
+```maxima
+integrate(x,x);
+plot2d(sin(x), [x,0,%pi]);
+```
+(Thanks to Michael M. Tung for the code example.)
+
+- By default, plots are saved in a file and directly embedded in the note.
+
+</details>
+
 
 Squiggle: For Squiggle support take a look at the [Obsidian Squiggle plugin](https://github.com/jqhoogland/obsidian-squiggle) by @jqhoogland.
 
@@ -417,6 +465,44 @@ The following magic commands are supported:
 
 (`@show(...)` and `@html(...)` are only supported for JavaScript and Python yet.)
 (The old commands `@note` and `@vault` are still supported, but may be removed in the future.)
+
+Examples for the magic commands with Python:
+
+```python
+print("Vault path:", @vault_path)
+print("Vault url:", @vault_url)
+
+print("Note path:", @note_path)
+print("Note url:", @note_url)
+
+print("Note title:", @title)
+```
+
+```python
+@show("image.png")
+@show("image.png", 100, 100)
+@show("https://upload.wikimedia.org/wikipedia/commons/d/de/TestScreen_square.svg", 10%, 10%, "center")
+```
+
+```python
+@html("<h1>HTML Caption</h1>")
+@html('''
+<svg width="100%" height="100%" viewBox="0 0 600 600" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+  <circle cx="300" cy="300" r="250" style="fill:peru;" />
+  <circle cx="200" cy="250" r="50" style="fill:black;" />
+  <circle cx="400" cy="250" r="50" style="fill:black;" />
+  <circle cx="190" cy="230" r="20" style="fill:white;" />
+  <circle cx="390" cy="230" r="20" style="fill:white;" />
+  <circle cx="250" cy="400" r="85" style="fill:saddlebrown;" />
+  <circle cx="350" cy="400" r="85" style="fill:saddlebrown;" />
+  <ellipse cx="300" cy="380" rx="50" ry="35" style="fill:black;" />
+  <ellipse cx="130" cy="100" rx="110" ry="70" style="fill:saddlebrown;"/>
+<ellipse cx="470" cy="100" rx="110" ry="70" style="fill:saddlebrown;" />
+</svg> 
+''')
+```
+
+Try it out yourself!
 
 ![Example how to use the magic commands.](https://github.com/twibiral/obsidian-execute-code/blob/master/images/magic_example.png?raw=true)
 
@@ -545,6 +631,20 @@ In your vault go to Settings > Community plugins > Browse and search for "Execut
 or
 
 Follow [this link](https://obsidian.md/plugins?search=execute%20code#) and click "Open in Obsidian".
+	
+
+## Locating Path Settings ( ex. JavaScript | Node )
+	
+To avoid or resolve errors from an incorrect path.
+	
+('where' for Mac and Windows) --- (for Linux Users, replace 'where' with 'which')
+	
+1. In your terminal, type 'where node'
+   ![Type 'where node' in terminal](https://github.com/twibiral/obsidian-execute-code/blob/master/images/path_location_shell.png?raw=true)
+2. Copy path from terminal ( ex. /opt/homebrew/bin/node )
+3. Paste in path under settings ( ex. Node path )
+   ![Update path under settings with path from step 2](https://github.com/twibiral/obsidian-execute-code/blob/master/images/path_location_settings.png?raw=true)
+
 
 ## Warning ⚠
 
